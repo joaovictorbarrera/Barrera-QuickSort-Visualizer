@@ -76,8 +76,8 @@ function App() {
   }
 
   return (
-    <main>
-      <div className="p-2">
+    <main className="d-flex flex-column">
+      <div className="p-2" id="control-title">
         <h1>Quick Sort Visualizer</h1>
         <Controller setItems={setItems} setHasAnimated={setHasAnimated} disabled={animating}/>
       </div>

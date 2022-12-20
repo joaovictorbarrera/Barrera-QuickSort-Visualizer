@@ -12,6 +12,7 @@ interface ControllerProps {
 
 function Controller({setItems, setHasAnimated, disabled}: ControllerProps) {
   const MAX_VALUE_ALLOWED = 50
+  const MAX_VALUES_ALLOWED = 12
   const [error, setError] = useState<String | null>(null)
 
   function handleSubmit(e: any) {
@@ -22,15 +23,18 @@ function Controller({setItems, setHasAnimated, disabled}: ControllerProps) {
 
     let v
     try {
-        const values: number[] = valuesString.split(",").map(value => {
-            v = value.trim()
-            const num = Number(v)
-            if (isNaN(num)) throw new Error(`"${v}" is not a valid number`)
-            if (v === "") throw new Error("Invalid commas.")
-            if (num > MAX_VALUE_ALLOWED) throw new Error(`${v} is too large. Max allowed: ${MAX_VALUE_ALLOWED}`)
-            if (num < 1) throw new Error(`${v} is too small. Min allowed: 1`)
+        const unparsedValues: string[] = valuesString.split(",")
+        if (unparsedValues.length > MAX_VALUES_ALLOWED) throw new Error("Too many values. Won't display nicely.")
 
-            return Number(v)
+        const values: number[] = unparsedValues.map(value => {
+          v = value.trim()
+          const num = Number(v)
+          if (isNaN(num)) throw new Error(`"${v}" is not a valid number`)
+          if (v === "") throw new Error("Invalid commas.")
+          if (num > MAX_VALUE_ALLOWED) throw new Error(`${v} is too large. Max allowed: ${MAX_VALUE_ALLOWED}`)
+          if (num < 1) throw new Error(`${v} is too small. Min allowed: 1`)
+
+          return Number(v)
         })
 
         makeItems(values)
