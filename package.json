@@ -1,0 +1,21 @@
+{
+  "name": "barrera-quicksort-visualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ../server && npm install",
+    "start": "cd server && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaovictorbarrera/Barrera-QuickSort-Visualizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaovictorbarrera/Barrera-QuickSort-Visualizer/issues"
+  },
+  "homepage": "https://github.com/joaovictorbarrera/Barrera-QuickSort-Visualizer#readme"
+}
